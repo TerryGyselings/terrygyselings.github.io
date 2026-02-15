@@ -193,7 +193,7 @@ a {
 
 /* Logo */
 .timeline-logo {
-  flex: 0 0 50px;
+  flex: 0 0 150px;
   position: relative;
   z-index: 1;
 }
