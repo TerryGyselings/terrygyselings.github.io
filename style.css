@@ -162,3 +162,23 @@ a {
     display: flex;
   }
 }
+
+.education-item {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+}
+
+.education-item:hover {
+  transform: translateY(-3px);
+}
+
+.education-item h3 {
+  margin: 0 0 5px 0;
+}
+
+.education-item p {
+  margin: 3px 0;
+}
