@@ -119,15 +119,15 @@ a {
   font-weight: 600;
 }
 
-/* Hamburger */
-.menu-burger {
+/* Burger */
+.burger {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
 }
 
-.menu-burger span {
+.burger span {
   width: 25px;
   height: 3px;
   background: var(--nav-text);
@@ -158,7 +158,7 @@ a {
     transform: translateX(0);
   }
 
-  .menu-burger {
+  .burger {
     display: flex;
   }
 }
