@@ -161,6 +161,11 @@ a {
   .burger {
     display: flex;
   }
+
+  .timeline-logo {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 /* Timeline générale */
