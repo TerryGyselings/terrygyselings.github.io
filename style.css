@@ -193,20 +193,25 @@ a {
 
 /* Logo */
 .timeline-logo {
-  flex: 0 0 150px;
-  position: relative;
-  z-index: 1;
+  width: 150px;
+  height: 150px;
+  background: #ffffff; /* fond blanc uniforme */
+  border-radius: 10px;
+  border: 2px solid var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px; /* espace autour du logo */
+  box-sizing: border-box;
+  flex-shrink: 0; /* ne se rétrécit pas */
 }
 
 .timeline-logo img {
-  width: 100%;
-  height: auto;
   max-width: 100%;
-  border-radius: 50%;
-  object-fit: contain;
-  border: 2px solid var(--text);
-  background: #ffffff;
+  max-height: 100%;
+  object-fit: contain; /* garde les proportions */
 }
+
 
 /* Contenu */
 .timeline-content {
