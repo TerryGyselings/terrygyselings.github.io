@@ -2,6 +2,8 @@
   --bg: #ffffff;
   --text: #111827;
   --card: #f3f4f6;
+  --nav-bg: #1f1f1f;
+  --nav-text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -9,6 +11,8 @@
     --bg: #0f172a;
     --text: #e5e7eb;
     --card: #1e293b;
+    --nav-bg: #111827;
+    --nav-text: #e5e7eb;
   }
 }
 
@@ -23,6 +27,40 @@ body {
   color: var(--text);
 }
 
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav .logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav .nav-links a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav .nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Header & Main */
 header {
   padding: 80px 20px;
   text-align: center;
@@ -57,7 +95,7 @@ h2 {
   background: var(--card);
   padding: 25px;
   border-radius: 12px;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .card:hover {
@@ -66,7 +104,7 @@ h2 {
 
 .empty {
   text-align: center;
-  opacity: .6;
+  opacity: 0.6;
 }
 
 footer {
