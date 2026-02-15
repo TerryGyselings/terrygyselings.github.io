@@ -186,7 +186,7 @@ a {
 /* Chaque item de la timeline */
 .timeline-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 40px;
   position: relative;
 }
@@ -207,19 +207,6 @@ a {
   object-fit: contain;
   border: 2px solid var(--text);
   background: var(--card);
-}
-
-/* Cercle sur la ligne verticale */
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: 25px;
-  top: 12px;
-  width: 16px;
-  height: 16px;
-  background: var(--text);
-  border-radius: 50%;
-  z-index: 2;
 }
 
 /* Contenu */
