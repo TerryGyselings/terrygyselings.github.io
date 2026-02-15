@@ -196,7 +196,7 @@ a {
   width: 150px;
   height: 150px;
   background: #ffffff; /* fond blanc uniforme */
-  border-radius: 10px;
+  border-radius: 50px;
   border: 2px solid var(--text);
   display: flex;
   align-items: center;
