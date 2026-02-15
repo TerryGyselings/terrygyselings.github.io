@@ -161,11 +161,6 @@ a {
   .burger {
     display: flex;
   }
-
-  .timeline-logo {
-    width: 100px;
-    height: 100px;
-  }
 }
 
 /* Timeline générale */
@@ -209,6 +204,13 @@ a {
   padding: 10px; /* espace autour du logo */
   box-sizing: border-box;
   flex-shrink: 0; /* ne se rétrécit pas */
+}
+
+@media (max-width: 480px) {
+  .timeline-logo {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 .timeline-logo img {
