@@ -1,128 +1,253 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terry Gyselings — Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terry Gyselings — Software Engineer</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<nav>
-  <a href="#" class="logo">Terry Gyselings</a>
-  <div class="nav-links" id="navLinks">
-    <a href="#about">À propos</a>
-    <a href="#projects">Projets</a>
-    <a href="#education">Formation</a>
-    <a href="#contact">Contact</a>
-  </div>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      Terry Gyselings
+    </div>
+    <div class="nav-menu" id="navMenu">
+        <a href="#about" data-fr="À propos" data-en="About">À propos</a>
+        <a href="#skills" data-fr="Compétences" data-en="Skills">Compétences</a>
+        <a href="#projects" data-fr="Projets" data-en="Projects">Projets</a>
+        <a href="#education" data-fr="Formation" data-en="Education">Formation</a>
+        <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
 
-  <div class="burger" id="burger">
-    <span></span>
-    <span></span>
-    <span></span>
+        <!-- LANGUAGE SWITCH -->
+        <div class="lang-switch" id="langToggle">
+            <img src="images/flags/fr.png" id="langFlag" alt="language flag">
+        </div>
+        <!-- THEME SWITCH -->
+        <div class="theme-switch" id="themeToggle">
+            <div class="switch-track">
+                <div class="switch-thumb"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="burger" id="burger">
+      ☰
+    </div>
   </div>
 </nav>
-  
-<header>
-  <h1>Terry Gyselings</h1>
-  <p>Développeur informatique</p>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-background"></div>
+  <div class="hero-content">
+    <h1>
+      Terry Gyselings
+    </h1>
+    <h2
+      data-fr="Ingénieur logiciel en devenir"
+      data-en="Future Software Engineer">
+      Ingénieur logiciel en devenir
+    </h2>
+    <p
+      data-fr="Je développe des logiciels robustes, performants et maintenables."
+      data-en="I build robust, efficient and maintainable software.">
+      Je développe des logiciels robustes, performants et maintenables.
+    </p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn primary"
+         data-fr="Voir mes projets"
+         data-en="View my projects">
+        Voir mes projets
+      </a>
+      <a href="Terry_Gyselings_CV_Resume.pdf"
+         class="btn secondary"
+         target="_blank"
+         data-fr="Télécharger CV"
+         data-en="Download CV">
+        Télécharger CV
+      </a>
+    </div>
+  </div>
 </header>
-  
+
+<!-- MAIN -->
 <main>
-<section id="about">
-  <h2>À propos</h2>
-  <p>
-    Développeur informatique passionné, spécialisé en PHP et Java.
-    J’aime construire des solutions propres et efficaces.
-  </p>
-</section>
-
-<section id="projects">
-  <h2>Projets</h2>
-  <div class="grid">
-    <div class="card empty">
-      Projets à venir 🚀
-    </div>
-  </div>
-</section>
-
-<section id="education">
-  <h2>Formation</h2>
-  <p>
-    Un parcours atypique, pour un résultat unique !
-  </p>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-logo">
-        <img src="images/logo-esir.png" alt="Logo ESIR" />
-      </div>
-      <div class="timeline-content">
-        <h3>ESIR — École Supérieure d'Ingénieur de Rennes</h3>
-        <p>1re année — Ingénieur informatique</p>
-        <p>2025 – Présent</p>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-logo">
-        <img src="images/logo-cesi.png" alt="Logo CESI Bordeaux" />
-      </div>
-      <div class="timeline-content">
-        <h3>CESI Bordeaux — Alternance Développeur informatique</h3>
-        <p>2 ans d’alternance pour devenir développeur informatique</p>
-        <p>2023 – 2025</p>
-      </div>
-    </div>
-  </div>
-  <div class="timeline">
-     Et avant cela ...
-  </div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-logo">
-        <img src="images/logo-univ-bordeaux.png" alt="Logo Université de Bordeaux" />
-      </div>
-      <div class="timeline-content">
-        <h3>DIU FARC - TEC</h3>
-        <p>Formation d'Attaché de Recherche Clinique</p>
-        <p>2021 – 2022</p>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-logo">
-        <img src="images/logo-ims.png" alt="Logo IMS Bordeaux" />
-      </div>
-      <div class="timeline-content">
-        <h3>IFMEM Bordeaux</h3>
-        <p>Diplôme d'État de Manipulateur en Électroradiologie Médicale</p>
-        <p>2011 – 2015</p>
-      </div>
-    </div>
-  </div>
-</section>
-</main>
-  
-<footer>
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email : <a href="mailto:terry.gyselings.pro@gmail.com">terry.gyselings.pro@gmail.com</a></p>
-    <p>
-    <a href="https://github.com/TerryGyselings" target="_blank">GitHub</a> |
-    <a href="https://linkedin.com/in/terry-gyselings-883230313" target="_blank">LinkedIn</a>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 data-fr="À propos" data-en="About">
+      À propos
+    </h2>
+    <p
+      data-fr="Étudiant ingénieur en informatique, spécialisé en développement logiciel backend et systèmes. Passionné par la création d'applications robustes et performantes."
+      data-en="Software engineering student specializing in backend and systems development. Passionate about building robust and efficient applications.">
+      Étudiant ingénieur en informatique, spécialisé en développement logiciel backend et systèmes. Passionné par la création d'applications robustes et performantes.
     </p>
   </section>
+
+  <!-- SKILLS -->
+<section id="skills">
+
+  <h2 data-fr="Compétences" data-en="Skills">Compétences</h2>
+
+  <div class="skills-grid">
+
+    <!-- BACKEND -->
+    <div class="skill-category">
+      <h3 data-fr="Backend" data-en="Backend">Backend</h3>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/php.png" class="skill-logo" alt="PHP"> PHP</div>
+        <div class="skill-bar"><div class="skill-level" data-level="80">80%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/java.png" class="skill-logo" alt="Java"> Java</div>
+        <div class="skill-bar"><div class="skill-level" data-level="65">65%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/csharp.png" class="skill-logo" alt="C#"> C#</div>
+        <div class="skill-bar"><div class="skill-level" data-level="50">50%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/python.png" class="skill-logo" alt="Python"> Python</div>
+        <div class="skill-bar"><div class="skill-level" data-level="60">60%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/c.png" class="skill-logo" alt="C"> C</div>
+        <div class="skill-bar"><div class="skill-level" data-level="50">50%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/symfony.png" class="skill-logo" alt="Symfony"> Symfony</div>
+        <div class="skill-bar"><div class="skill-level" data-level="70">70%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/dotnet.png" class="skill-logo" alt=".NET"> .NET</div>
+        <div class="skill-bar"><div class="skill-level" data-level="50">50%</div></div>
+      </div>
+
+    </div>
+
+    <!-- FRONTEND -->
+    <div class="skill-category">
+      <h3 data-fr="Frontend" data-en="Frontend">Frontend</h3>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/html.png" class="skill-logo" alt="HTML/CSS"> HTML/CSS</div>
+        <div class="skill-bar"><div class="skill-level" data-level="90">90%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/javascript.png" class="skill-logo" alt="JavaScript"> JavaScript / jQuery</div>
+        <div class="skill-bar"><div class="skill-level" data-level="80">80%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/angular.png" class="skill-logo" alt="Angular"> Angular</div>
+        <div class="skill-bar"><div class="skill-level" data-level="15">15%</div></div>
+      </div>
+
+    </div>
+
+    <!-- DATABASE -->
+    <div class="skill-category">
+      <h3 data-fr="Base de données" data-en="Database">Base de données</h3>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/mysql.png" class="skill-logo" alt="MySQL"> MySQL</div>
+        <div class="skill-bar"><div class="skill-level" data-level="90">90%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/oracle.png" class="skill-logo" alt="Oracle"> Oracle</div>
+        <div class="skill-bar"><div class="skill-level" data-level="40">40%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/mcd.png" class="skill-logo" alt="MCD/MLD"> MCD / MLD</div>
+        <div class="skill-bar"><div class="skill-level" data-level="85">85%</div></div>
+      </div>
+
+    </div>
+
+    <!-- TOOLS / DEVOPS -->
+    <div class="skill-category">
+      <h3 data-fr="Outils" data-en="Tools">Outils</h3>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/docker.png" class="skill-logo" alt="Docker"> Docker</div>
+        <div class="skill-bar"><div class="skill-level" data-level="60">60%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/git.png" class="skill-logo" alt="Git"> Git</div>
+        <div class="skill-bar"><div class="skill-level" data-level="70">70%</div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-name"><img src="images/skills/cicd.png" class="skill-logo" alt="CI/CD"> CI/CD</div>
+        <div class="skill-bar"><div class="skill-level" data-level="40">40%</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 data-fr="Projets" data-en="Projects">
+      Projets
+    </h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>
+          Projets à venir
+        </h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <h2 data-fr="Formation" data-en="Education">
+      Formation
+    </h2>
+    <div class="timeline">
+      Timeline à compléter
+    </div>
+  </section>
+</main>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <h2>
+    Contact
+  </h2>
+  <p>
+    terry.gyselings.pro@gmail.com
+  </p>
+  <p>
+    <a href="https://github.com/TerryGyselings" target="_blank">
+      GitHub
+    </a>
+    |
+    <a href="https://linkedin.com" target="_blank">
+      LinkedIn
+    </a>
+  </p>
 </footer>
 
-<script>
-  const burger = document.getElementById('burger');
-  const navLinks = document.getElementById('navLinks');
+<script src="script.js"></script>
 
-  burger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
-</script>
-  
 </body>
 </html>
