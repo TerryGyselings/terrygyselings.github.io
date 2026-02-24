@@ -31,7 +31,7 @@
 .carousel-viewport {
   overflow: visible;
   overscroll-behavior-x: contain;
-  padding: 0 60px;
+  padding: 0 40px;
 }
 
 .carousel-container {

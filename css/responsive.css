@@ -6,7 +6,6 @@
     right: 0;
     top: 60px;
     padding: 20px;
-
     opacity: 0;
     pointer-events: none; /* empêche les clics quand fermé */
     transform: translateY(-20px);
@@ -71,12 +70,17 @@
     font-size: 0.9rem;
   }
 
-    .project-slide {
+  .project-slide {
     flex: 0 0 90%;
     padding: 30px 15px;
   }
+
   .project-image {
     height: 200px;
+  }
+
+  .carousel-viewport {
+    padding: 0;
   }
   .carousel-btn {
     font-size: 2.5rem;
