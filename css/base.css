@@ -1,3 +1,15 @@
+/* POLICE — Archivo, hébergée dans le dépôt (pas d'appel à Google Fonts).
+   Police variable : la graisse (100–900) et la largeur (62–125 %) se règlent en CSS. */
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url("../fonts/archivo-latin-wdth-normal.woff2") format("woff2");
+}
+
 *,
 *::before,
 *::after {
@@ -6,55 +18,183 @@
   box-sizing: border-box;
 }
 
-/* VARIABLES */
+/* VARIABLES
+   Palette tirée de la radiologie : le bleu du film radiographique, le blanc froid
+   du négatoscope, et l'ambre des pictogrammes de radioprotection en accent. */
 
 :root {
-  --primary: #2563eb;
-  --primary-dark: #1e40af;
-  --bg: #ffffff;
-  --bg-secondary: #f8fafc;
-  --text: #0f172a;
-  --text-secondary: #475569;
-  --border: #e2e8f0;
+  --primary: #1c5a85; /* bleu film : liens, période « informatique » */
+  --primary-dark: #14425f;
+  --bg: #f3f6f8; /* blanc froid du négatoscope */
+  --bg-secondary: #ffffff;
+  --text: #0f2535;
+  --text-secondary: #4a6070;
+  --border: #d3dde4;
+  --accent: #f5b700; /* ambre : action principale, repère « aujourd'hui » */
+  --accent-dark: #dda400;
+  --accent-ink: #0f2535; /* texte posé sur l'ambre */
+  --era-health: #8fa4b1; /* période « santé » */
+  --era-dev: #1c5a85;
+
+  /* fonds des bandes de section (voir css/sections.css) */
+  --band-surface: #ffffff;
+  --band-tint: #e2ebf1;
+  --band-dark: #0f2535;
+  --card-shadow: 0 1px 2px rgba(15, 37, 53, 0.06), 0 12px 32px -12px rgba(15, 37, 53, 0.18);
+
+  --content-width: 1080px;
+  --gutter: 24px;
+  --nav-height: 64px;
 }
 
 .dark {
-  --bg: #0f172a;
-  --bg-secondary: #020617;
-  --text: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --border: #1e293b;
+  --primary: #86c5ec;
+  --primary-dark: #b4dbf3;
+  --bg: #0b1b26;
+  --bg-secondary: #11293a;
+  --text: #e7eef2;
+  --text-secondary: #9fb4c1;
+  --border: #223e51;
+  --era-health: #5d7686;
+  --era-dev: #86c5ec;
+  --band-surface: #0f2433;
+  --band-tint: #0d2130;
+  --band-dark: #06121a;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 16px 36px -14px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
 }
 
 /* BODY */
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 16px);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
   min-height: 100vh;
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
 
-.hidden {
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--primary);
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--primary-dark);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Titres : Archivo resserrée et grasse */
+
+h1,
+h2,
+h3,
+h4 {
+  font-stretch: 78%;
+  font-weight: 750;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+/* CONTENEUR : largeur de lecture commune à toutes les sections */
+
+.container {
+  max-width: calc(var(--content-width) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+/* HACHURES : quart de cercle rayé, repris du CV, posé dans un coin de bande */
+
+.hatch {
+  position: absolute;
+  width: clamp(140px, 22vw, 300px);
+  aspect-ratio: 1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    135deg,
+    currentColor 0 1.5px,
+    transparent 1.5px 9px
+  );
+}
+
+/* APPARITION AU DÉFILEMENT
+   La classe .js est posée par le script en ligne de index.html : sans JavaScript,
+   rien n'est masqué. js/scroll.js ajoute .is-visible quand l'élément entre à l'écran. */
+
+.js .reveal {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(22px);
   transition:
     opacity 0.6s ease,
-    transform 0.6s ease;
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.visible {
+.js .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+}
+
+@media print {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ACCESSIBILITÉ */
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 2000;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 12px;
+  color: var(--accent-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

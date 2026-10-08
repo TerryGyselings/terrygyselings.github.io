@@ -1,97 +1,145 @@
-/* TIMELINE */
+/* PARCOURS : expérience à gauche, formation à droite */
+
+/* légende des couleurs, les mêmes que sur la frise du haut de page */
+.era-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin: -16px 0 36px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.era-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.era-legend li::before {
+  content: "";
+  width: 22px;
+  height: 10px;
+  border-radius: 2px;
+  background: var(--era-dev);
+}
+
+.era-legend li.era-health::before {
+  background: var(--era-health);
+}
+
+.parcours-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(40px, 6vw, 72px);
+  align-items: start;
+}
+
+.parcours-title {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+/* TIMELINE : un trait vertical, une pastille par étape */
 
 .timeline {
   position: relative;
-  max-width: 900px;
-  margin: 40px auto 0;
-  padding-left: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+  display: grid;
+  gap: 16px;
+  padding-left: 30px;
 }
 
-.timeline-line {
+.timeline::before {
+  content: "";
   position: absolute;
-  left: 20px;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    var(--primary),
-    rgba(37, 99, 235, 0.2)
-  );
-  border-radius: 2px;
+  left: 7px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: var(--border);
 }
 
 .timeline-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  --era: var(--era-dev);
   position: relative;
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px 18px;
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--era);
+  border-radius: 14px;
+  background: var(--bg-secondary);
+  box-shadow: var(--card-shadow);
 }
 
-.timeline-item.visible {
-  opacity: 1;
-  transform: translateY(0);
+.timeline-item.era-health {
+  --era: var(--era-health);
 }
 
-.timeline-point {
+/* la pastille posée sur le trait */
+.timeline-item::before {
+  content: "";
   position: absolute;
-  left: -26px;
-  top: 56px;
+  left: -31px;
+  top: 22px;
   width: 16px;
   height: 16px;
-  background: var(--primary);
   border-radius: 50%;
+  background: var(--era);
   border: 3px solid var(--bg);
-  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
-  z-index: 2;
 }
 
+/* étape en cours : pastille ambre */
+.timeline-item.is-current::before {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.timeline-dates {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--era) 16%, transparent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-content h4 {
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.timeline-org {
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.timeline-content p:not(.timeline-org) {
+  margin-top: 8px;
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+}
+
+/* Logo de l'école, toujours sur fond blanc pour rester lisible en thème sombre */
 .timeline-logo {
+  align-self: start;
   display: flex;
   align-items: center;
-  margin: 0 10px 0 20px;
-}
-
-.timeline-logo img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  border-radius: 50%;
-  border: 2px solid var(--primary);
+  justify-content: center;
+  width: 92px;
+  height: 56px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
   background: #ffffff;
 }
 
-.timeline-content {
-  background: var(--bg-secondary);
-  padding: 20px 25px;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  flex: 1;
-}
-
-.timeline-content h3 {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-  color: var(--primary);
-}
-
-.timeline-content p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  margin-bottom: 4px;
-}
-
-.timeline-divider {
-  text-align: left;
-  font-weight: 500;
-  color: var(--text-secondary);
-  margin: 20px 0 0 20px;
+.timeline-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
 }

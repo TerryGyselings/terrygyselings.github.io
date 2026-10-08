@@ -3,640 +3,925 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Terry Gyselings — Software Engineer</title>
+    <title data-en="Terry Gyselings — Computer engineering student, from radiology to software">
+      Terry Gyselings — Étudiant ingénieur en informatique, de la radiologie au logiciel
+    </title>
+    <meta
+      name="description"
+      content="Portfolio de Terry Gyselings, étudiant ingénieur en informatique à l'ESIR (Rennes) après huit ans en radiologie et deux ans de développement en alternance au CHU de Bordeaux. Projets, parcours et contact."
+      data-en-content="Portfolio of Terry Gyselings, computer engineering student at ESIR (Rennes, France) after eight years in radiology and two years as an apprentice developer at Bordeaux University Hospital. Projects, background and contact."
+    />
+    <meta name="author" content="Terry Gyselings" />
+    <meta name="theme-color" content="#f3f6f8" />
+    <link rel="canonical" href="https://terrygyselings.github.io/" />
+
+    <!-- Aperçu lors d'un partage (LinkedIn, Discord, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://terrygyselings.github.io/" />
+    <meta property="og:title" content="Terry Gyselings — De la radiologie au développement logiciel" />
+    <meta
+      property="og:description"
+      content="Étudiant ingénieur en informatique à l'ESIR (Rennes). Projets, parcours et contact."
+    />
+    <meta property="og:image" content="https://terrygyselings.github.io/images/og.png" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="fonts/archivo-latin-wdth-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Applique le thème avant le premier affichage pour éviter un flash clair/sombre -->
+    <script>
+      (function () {
+        document.documentElement.classList.add("js");
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (saved === "dark" || (!saved && prefersDark)) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/hero.css" />
     <link rel="stylesheet" href="css/buttons.css" />
     <link rel="stylesheet" href="css/sections.css" />
-    <link rel="stylesheet" href="css/skills.css" />
-    <link rel="stylesheet" href="css/timeline.css" />
     <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
+    <link rel="stylesheet" href="css/skills.css" />
     <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="css/responsive.css" />
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
 
-  <body>
-    <!-- NAVBAR -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="logo">Terry Gyselings</div>
-        <div class="nav-menu" id="navMenu">
-          <a href="#about" data-fr="À propos" data-en="About">À propos</a>
-          <a href="#skills" data-fr="Compétences" data-en="Skills"
-            >Compétences</a
-          >
-          <a href="#projects" data-fr="Projets" data-en="Projects">Projets</a>
-          <a href="#education" data-fr="Formation" data-en="Education"
-            >Formation</a
-          >
-          <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+  <body id="top">
+    <a class="skip-link" href="#main" data-en="Skip to content">Aller au contenu</a>
 
-          <!-- LANGUAGE SWITCH -->
-          <div class="lang-switch" id="langToggle">
-            <img src="images/flags/fr.png" id="langFlag" alt="language flag" />
-          </div>
-          <!-- THEME SWITCH -->
-          <div class="theme-switch" id="themeToggle">
-            <div class="switch-track">
-              <div class="switch-thumb"></div>
-            </div>
+    <!-- NAVBAR -->
+    <nav class="navbar" aria-label="Navigation principale" data-en-label="Main navigation">
+      <div class="nav-container">
+        <a class="logo" href="#top">Terry Gyselings</a>
+
+        <div class="nav-menu" id="navMenu">
+          <a href="#about" data-en="About">À propos</a>
+          <a href="#projects" data-en="Projects">Projets</a>
+          <a href="#experience" data-en="Background">Parcours</a>
+          <a href="#skills" data-en="Skills">Compétences</a>
+          <a href="#contact" data-en="Contact">Contact</a>
+
+          <div class="nav-tools">
+            <!-- LANGUAGE SWITCH -->
+            <button
+              type="button"
+              class="lang-switch"
+              id="langToggle"
+              aria-label="Afficher le site en anglais"
+              data-en-label="Show the site in French"
+            >
+              <span data-lang="fr" class="current">FR</span>
+              <span data-lang="en">EN</span>
+            </button>
+
+            <!-- THEME SWITCH -->
+            <button
+              type="button"
+              class="theme-switch"
+              id="themeToggle"
+              aria-pressed="false"
+              aria-label="Thème sombre"
+              data-en-label="Dark theme"
+            >
+              <span class="switch-track"><span class="switch-thumb"></span></span>
+            </button>
           </div>
         </div>
 
-        <div class="burger" id="burger">☰</div>
+        <button
+          type="button"
+          class="burger"
+          id="burger"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </nav>
 
     <!-- HERO -->
     <header class="hero">
-      <div class="hero-background"></div>
-      <div class="hero-content">
-        <h1>Terry Gyselings</h1>
-        <h2
-          data-fr="Ingénieur logiciel en devenir"
-          data-en="Future Software Engineer"
-        >
-          Ingénieur logiciel en devenir
-        </h2>
-        <p
-          data-fr="Je développe des logiciels robustes, performants et maintenables."
-          data-en="I build robust, efficient and maintainable software."
-        >
-          Je développe des logiciels robustes, performants et maintenables.
-        </p>
-        <div class="hero-buttons">
-          <a
-            href="#projects"
-            class="btn primary"
-            data-fr="Voir mes projets"
-            data-en="View my projects"
+      <div class="hatch hatch-hero" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1>
+            <span class="hero-name">Terry Gyselings</span>
+            <span class="hero-claim" data-en="From radiology to software development."
+              >De la radiologie au développement logiciel.</span
+            >
+          </h1>
+          <p
+            class="hero-lead"
+            data-en="Computer engineering student at ESIR in Rennes, France. Before that: eight years as a radiographer, then two years as an apprentice developer at Bordeaux University Hospital."
           >
-            Voir mes projets
-          </a>
-          <a
-            href="Terry_Gyselings_CV_Resume.pdf"
-            class="btn secondary"
-            target="_blank"
-            data-fr="Télécharger CV"
-            data-en="Download CV"
+            Étudiant ingénieur en informatique à l'ESIR, à Rennes. Avant cela : huit ans
+            manipulateur en radiologie, puis deux ans développeur en alternance au CHU de
+            Bordeaux.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn primary" data-en="View my projects">Voir mes projets</a>
+            <!-- Le CV change avec la langue : data-en-href donne le fichier anglais -->
+            <a
+              href="Terry_Gyselings_CV.pdf"
+              data-en-href="Terry_Gyselings_Resume.pdf"
+              class="btn secondary"
+              target="_blank"
+              rel="noopener"
+              data-en="Download my résumé (PDF)"
+              >Télécharger mon CV (PDF)</a
+            >
+          </div>
+
+          <p class="hero-availability">
+            <span class="availability-dot" aria-hidden="true"></span>
+            <span data-en="Looking for an internship from June to mid-August 2027."
+              >Je recherche un stage de juin à mi-août 2027.</span
+            >
+          </p>
+        </div>
+
+        <!-- FRISE : le parcours de 2011 à 2028, à l'échelle (1 colonne = 1 an) -->
+        <div class="trajectory-wrap">
+          <ol
+            class="trajectory"
+            aria-label="Parcours de 2011 à 2028"
+            data-en-label="Career path from 2011 to 2028"
           >
-            Télécharger CV
-          </a>
+            <li class="traj-item era-health label-up" style="--start: 1; --end: 5">
+              <span class="traj-label">
+                <span data-en="Radiography school">École de manipulateur radio</span>
+                <span class="traj-years">2011 – 2015</span>
+              </span>
+              <span class="traj-bar"></span>
+            </li>
+            <li class="traj-item era-health label-down" style="--start: 5; --end: 13">
+              <span class="traj-bar"></span>
+              <span class="traj-label">
+                <span data-en="Radiographer">Manipulateur en radiologie</span>
+                <span class="traj-years">2015 – 2023</span>
+              </span>
+            </li>
+            <!-- étape menée en parallèle : barre fine posée au-dessus de la frise -->
+            <li class="traj-item era-health traj-parallel label-up" style="--start: 11; --end: 12">
+              <span class="traj-label">
+                <span data-en="Clinical research diploma">Diplôme de recherche clinique</span>
+                <span class="traj-years">2021 – 2022</span>
+              </span>
+              <span class="traj-bar"></span>
+            </li>
+            <li class="traj-item era-dev label-down" style="--start: 13; --end: 15">
+              <span class="traj-bar"></span>
+              <span class="traj-label">
+                <span data-en="Apprentice developer">Développeur en alternance</span>
+                <span class="traj-years">2023 – 2025</span>
+              </span>
+            </li>
+            <li class="traj-item era-dev label-up label-end" style="--start: 15; --end: 18">
+              <span class="traj-label">
+                <span data-en="ESIR engineering school">École d'ingénieurs ESIR</span>
+                <span class="traj-years">2025 – 2028</span>
+              </span>
+              <span class="traj-bar"></span>
+            </li>
+          </ol>
+          <div class="traj-today" id="trajToday" hidden>
+            <span data-en="today">aujourd'hui</span>
+          </div>
         </div>
       </div>
     </header>
 
     <!-- MAIN -->
-    <main>
+    <main id="main">
       <!-- ABOUT -->
-      <section id="about">
-        <h2 data-fr="À propos" data-en="About">À propos</h2>
-        <p
-          data-fr="Étudiant ingénieur en informatique, spécialisé en développement logiciel backend et systèmes. Passionné par la création d'applications robustes et performantes."
-          data-en="Software engineering student specializing in backend and systems development. Passionate about building robust and efficient applications."
+      <section id="about" class="band band-surface">
+        <div class="container">
+          <h2 data-en="About">À propos</h2>
+          <div class="about-grid">
+            <div class="about-text reveal">
+              <p
+                data-en="I started my working life in healthcare. I qualified as a radiographer in 2015 and spent eight years in interventional and conventional radiology, in hospitals and private clinics. It taught me rigour, autonomy and how to deal with people."
+              >
+                J'ai commencé ma vie professionnelle dans le soin. Diplômé manipulateur en
+                électroradiologie médicale en 2015, j'ai exercé huit ans en radiologie
+                interventionnelle et conventionnelle, à l'hôpital et en clinique. J'en garde
+                la rigueur, l'autonomie et le sens du contact humain.
+              </p>
+              <p
+                data-en="In 2023 I retrained as a developer: a two-year apprenticeship at Bordeaux University Hospital with CESI, building internal tools in PHP, JavaScript and SQL, then ESIR to earn an engineering degree in computer science. I am heading towards backend and web application development, with a taste for robust, maintainable software."
+              >
+                En 2023, je me suis reconverti dans le développement : deux ans d'alternance
+                au CHU de Bordeaux avec le CESI, à construire des outils internes en PHP,
+                JavaScript et SQL, puis l'ESIR pour préparer un diplôme d'ingénieur en
+                informatique. Je m'oriente vers le développement backend et les applications
+                web, avec le goût des logiciels robustes et maintenables.
+              </p>
+            </div>
+
+            <dl class="about-facts reveal">
+              <div>
+                <dt data-en="Degree">Diplôme</dt>
+                <dd data-en="Engineering degree, ESIR — expected in 2028">
+                  Ingénieur ESIR, prévu en 2028
+                </dd>
+              </div>
+              <div>
+                <dt data-en="Internship">Stage</dt>
+                <dd data-en="June to mid-August 2027">De juin à mi-août 2027</dd>
+              </div>
+              <div>
+                <dt data-en="Based in">Lieu</dt>
+                <dd data-en="Rennes, France — open to relocation">Rennes, mobile</dd>
+              </div>
+              <div>
+                <dt data-en="Languages">Langues</dt>
+                <dd data-en="French, English (B2)">Français, anglais B2</dd>
+              </div>
+              <div>
+                <dt data-en="Outside of code">Hors du code</dt>
+                <dd data-en="Bouldering, golf, Japanese culture, travel">
+                  Escalade en bloc, golf, culture japonaise, voyages
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="band band-dark">
+        <div class="hatch hatch-projects" aria-hidden="true"></div>
+        <div class="container">
+          <h2 data-en="Projects">Projets</h2>
+          <p
+            class="section-intro"
+            data-en="Five team projects, from the most recent to the oldest. For each one, what the application does and what I built myself."
+          >
+            Cinq projets menés en équipe, du plus récent au plus ancien. Pour chacun, ce que
+            fait l'application et ce que j'y ai construit moi-même.
+          </p>
+        </div>
+
+        <!-- CARROUSEL : défilement horizontal natif (souris, tactile, clavier),
+             piloté par js/carousel.js pour les flèches, les points et la lecture auto -->
+        <div
+          class="carousel"
+          id="projectCarousel"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Projets"
+          data-en-label="Projects"
         >
-          Étudiant ingénieur en informatique, spécialisé en développement
-          logiciel backend et systèmes. Passionné par la création d'applications
-          robustes et performantes.
-        </p>
+          <div class="carousel-track" tabindex="0">
+            <!-- MYROAD.AI -->
+            <article class="project-slide">
+              <img
+                src="images/projects/myroad.webp"
+                class="project-image"
+                alt="Visuel du projet MyRoad.ai : une carte avec un itinéraire de voyage et la conversation avec l'agent IA qui le propose"
+                data-en-alt="MyRoad.ai project visual: a map with a travel itinerary and the conversation with the AI agent suggesting it"
+                width="1000"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-body">
+                <p class="project-year">
+                  2026 <span class="project-status" data-en="in progress">en cours</span>
+                </p>
+                <h3>MyRoad.ai</h3>
+                <p class="project-meta" data-en="Since September 2026, team project">
+                  Depuis septembre 2026, projet en équipe
+                </p>
+                <p
+                  data-en="An AI travel planner, currently in development: you give your constraints and wishes (dates, budget, pace, interests), and a Mistral AI agent builds your holiday itinerary. The goal is to bring everything together in one place, from discovery to booking. A Next.js and TypeScript web application backed by Supabase."
+                >
+                  Un planificateur de voyage par IA, en cours de développement : vous indiquez
+                  vos contraintes et vos envies (dates, budget, rythme, centres d'intérêt), et
+                  un agent IA Mistral construit l'itinéraire de vos vacances. L'objectif est de
+                  tout réunir au même endroit, de la découverte à la réservation. Application
+                  web en Next.js et TypeScript, adossée à Supabase.
+                </p>
+                <ul class="tech-badges" aria-label="Technologies">
+                  <li>Next.js</li>
+                  <li>TypeScript</li>
+                  <li>Supabase</li>
+                  <li>Mistral AI</li>
+                </ul>
+                <p class="project-links">
+                  <a
+                    href="https://github.com/ycbkaii/myroad.ai"
+                    target="_blank"
+                    rel="noopener"
+                    data-en="Code on GitHub"
+                    >Code sur GitHub</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <!-- VIDE GRENIER -->
+            <article class="project-slide">
+              <img
+                src="images/projects/videgrenier.webp"
+                class="project-image"
+                alt="Visuel du projet Vide Grenier : le site d'annonces, ses trois services Docker Compose et son pipeline GitHub Actions"
+                data-en-alt="Garage sale project visual: the classified ads site, its three Docker Compose services and its GitHub Actions pipeline"
+                width="1000"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-body">
+                <p class="project-year">2025</p>
+                <h3 data-en="Online garage sale">Vide Grenier en ligne</h3>
+                <p class="project-meta" data-en="April – June 2025, in a team of two">
+                  Avril – juin 2025, en binôme
+                </p>
+                <p
+                  data-en="A classified ads website for second-hand goods, written in PHP (MVC architecture, Twig views, MySQL)."
+                >
+                  Un site d'annonces de vide-grenier écrit en PHP (architecture MVC, vues
+                  Twig, MySQL).
+                </p>
+                <p class="project-role">
+                  <span class="role-label" data-en="My part:">Mon rôle :</span>
+                  <span
+                    data-en="containerising it with Docker Compose (application, MySQL, phpMyAdmin) and writing a GitHub Actions workflow that builds the image and publishes it to GitHub Container Registry on every push to dev, preprod and prod."
+                    >la conteneurisation avec Docker Compose (application, MySQL, phpMyAdmin)
+                    et un workflow GitHub Actions qui construit l'image et la publie sur
+                    GitHub Container Registry à chaque push sur dev, preprod et prod.</span
+                  >
+                </p>
+                <ul class="tech-badges" aria-label="Technologies">
+                  <li>PHP</li>
+                  <li>Twig</li>
+                  <li>MySQL</li>
+                  <li>Docker</li>
+                  <li>GitHub Actions</li>
+                </ul>
+                <p class="project-links">
+                  <a
+                    href="https://github.com/barthelemy-lebel/bloc5-vide-grenier"
+                    target="_blank"
+                    rel="noopener"
+                    data-en="Code on GitHub"
+                    >Code sur GitHub</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <!-- STIVE -->
+            <article class="project-slide">
+              <img
+                src="images/projects/stive.webp"
+                class="project-image"
+                alt="Visuel du projet STIVE : la boutique de bonus du site web, le classement des vendeurs et le jeu"
+                data-en-alt="STIVE project visual: the website's bonus shop, the seller leaderboard and the game"
+                width="1000"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-body">
+                <p class="project-year">2024 – 2025</p>
+                <h3>STIVE — Potion Seller</h3>
+                <p class="project-meta" data-en="October 2024 – February 2025, team project">
+                  Octobre 2024 – février 2025, projet en équipe
+                </p>
+                <p
+                  data-en="A potion shop in three parts: an ASP.NET Core API (Entity Framework, MySQL, JWT authentication), a management game built with Godot, and a website."
+                >
+                  Une boutique de potions en trois briques : une API ASP.NET Core (Entity
+                  Framework, MySQL, authentification JWT), un jeu de gestion développé avec
+                  Godot et un site web.
+                </p>
+                <p class="project-role">
+                  <span class="role-label" data-en="My part:">Mon rôle :</span>
+                  <span
+                    data-en="the whole website, in Razor Pages — shop and cart, player leaderboard, sign-up and login, and the admin area (potions, suppliers, bonuses, roles)."
+                    >tout le site web, en Razor Pages — boutique et panier, classement des
+                    joueurs, inscription et connexion, espace d'administration (potions,
+                    fournisseurs, bonus, rôles).</span
+                  >
+                </p>
+                <ul class="tech-badges" aria-label="Technologies">
+                  <li>C#</li>
+                  <li>ASP.NET Core</li>
+                  <li>Razor Pages</li>
+                  <li>MySQL</li>
+                  <li>Godot</li>
+                </ul>
+                <p class="project-links">
+                  <a
+                    href="https://github.com/Matht64/STIVE-Potion-Seller-CL"
+                    target="_blank"
+                    rel="noopener"
+                    data-en="Website code on GitHub"
+                    >Code du site web sur GitHub</a
+                  >
+                  <a
+                    href="https://github.com/Matht64/STIVE-Potion-Seller"
+                    target="_blank"
+                    rel="noopener"
+                    data-en="The three repositories"
+                    >Les trois dépôts</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <!-- POKEDEX -->
+            <article class="project-slide">
+              <img
+                src="images/projects/pokedex.webp"
+                class="project-image"
+                alt="Visuel du projet Pokédex : la liste des Pokémon, une fiche détaillée et le Shinydex sur mobile"
+                data-en-alt="Pokédex project visual: the Pokémon list, a detail page and the Shinydex on mobile"
+                width="1000"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-body">
+                <p class="project-year">2024</p>
+                <h3>Pokédex</h3>
+                <p class="project-meta" data-en="February – June 2024, team of three">
+                  Février – juin 2024, en équipe de trois
+                </p>
+                <p
+                  data-en="A Symfony application to browse the Pokédex, track your catches (including a “Shinydex”) and build your teams, with user accounts."
+                >
+                  Une application Symfony pour parcourir le Pokédex, suivre ses captures (y
+                  compris un « Shinydex ») et composer ses équipes, avec des comptes
+                  utilisateurs.
+                </p>
+                <p class="project-role">
+                  <span class="role-label" data-en="My part:">Mon rôle :</span>
+                  <span
+                    data-en="building the interface with Tailwind CSS and making it responsive, the Pokémon pages, the Shinydex, and part of the sign-up and security setup."
+                    >l'intégration de l'interface avec Tailwind CSS et son adaptation mobile,
+                    les fiches Pokémon, le Shinydex et une partie de l'inscription et de la
+                    sécurité.</span
+                  >
+                </p>
+                <ul class="tech-badges" aria-label="Technologies">
+                  <li>PHP</li>
+                  <li>Symfony</li>
+                  <li>Doctrine</li>
+                  <li>Twig</li>
+                  <li>Tailwind CSS</li>
+                  <li>MySQL</li>
+                </ul>
+                <p class="project-links">
+                  <a
+                    href="https://github.com/ManuelTARBY/Pokedex"
+                    target="_blank"
+                    rel="noopener"
+                    data-en="Code on GitHub"
+                    >Code sur GitHub</a
+                  >
+                </p>
+              </div>
+            </article>
+
+            <!-- METEO -->
+            <article class="project-slide">
+              <img
+                src="images/projects/meteo.webp"
+                class="project-image"
+                alt="Visuel du projet Météo : tableau de bord d'une sonde avec ses courbes de température et d'humidité, et la version mobile"
+                data-en-alt="Weather project visual: a sensor dashboard with its temperature and humidity charts, and the mobile version"
+                width="1000"
+                height="1000"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="project-body">
+                <p class="project-year">2023</p>
+                <h3 data-en="Weather — sensor monitoring">Météo — suivi de capteurs</h3>
+                <p
+                  class="project-meta"
+                  data-en="November – December 2023, CESI project, team of three"
+                >
+                  Novembre – décembre 2023, projet CESI en équipe de trois
+                </p>
+                <p
+                  data-en="A Django application that monitors temperature and humidity sensors: a REST API receives the readings, and the web app shows them as dashboards, charts, history and a map, with alerts based on configurable thresholds."
+                >
+                  Une application Django de suivi de capteurs de température et d'humidité :
+                  une API REST reçoit les relevés, l'application web les présente en tableaux
+                  de bord, graphiques, historique et carte, avec des alertes sur seuils
+                  paramétrables.
+                </p>
+                <p class="project-role">
+                  <span class="role-label" data-en="My part:">Mon rôle :</span>
+                  <span
+                    data-en="the web application screens (dashboards, sensor detail, history, alert management) and their Django views."
+                    >les écrans de l'application web (tableaux de bord, détail d'un capteur,
+                    historique, gestion des alertes) et leurs vues Django.</span
+                  >
+                </p>
+                <ul class="tech-badges" aria-label="Technologies">
+                  <li>Python</li>
+                  <li>Django</li>
+                  <li>MySQL</li>
+                  <li>Chart.js</li>
+                  <li>Leaflet</li>
+                </ul>
+                <p class="project-links">
+                  <a
+                    href="https://github.com/EwennV/CUBES1"
+                    target="_blank"
+                    rel="noopener"
+                    data-en="Code on GitHub"
+                    >Code sur GitHub</a
+                  >
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="carousel-controls">
+            <button
+              type="button"
+              class="carousel-btn prev"
+              aria-label="Projet précédent"
+              data-en-label="Previous project"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+            <div class="carousel-dots"></div>
+            <button
+              type="button"
+              class="carousel-btn next"
+              aria-label="Projet suivant"
+              data-en-label="Next project"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE + EDUCATION -->
+      <section id="experience" class="band">
+        <div class="container">
+          <h2 data-en="Background">Parcours</h2>
+          <p class="section-intro" data-en="An unusual path, for a unique result!">
+            Un parcours atypique, pour un résultat unique !
+          </p>
+          <!-- mêmes couleurs que la frise du haut de page -->
+          <ul class="era-legend">
+            <li class="era-dev" data-en="Software">Informatique</li>
+            <li class="era-health" data-en="Healthcare">Santé</li>
+          </ul>
+
+          <div class="parcours-grid">
+            <!-- EXPERIENCE -->
+            <div>
+              <h3 class="parcours-title" data-en="Experience">Expérience</h3>
+              <ol class="timeline">
+                <li class="timeline-item reveal">
+                  <p class="timeline-dates" data-en="June – August 2026">Juin – août 2026</p>
+                  <div class="timeline-content">
+                    <h4 data-en="Developer intern">Stage de développement</h4>
+                    <p class="timeline-org">La Banque Postale, Gradignan</p>
+                    <p
+                      data-en="Built an internal web tool with Node.js, Express and PostgreSQL, including role-based access control."
+                    >
+                      Développement d'un outil web interne avec Node.js, Express et
+                      PostgreSQL, avec gestion des rôles et des accès.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="timeline-item reveal">
+                  <p class="timeline-dates">2023 – 2025</p>
+                  <div class="timeline-content">
+                    <h4 data-en="Apprentice developer">Développeur en alternance</h4>
+                    <p class="timeline-org" data-en="Bordeaux University Hospital (CHU)">
+                      CHU de Bordeaux
+                    </p>
+                    <p
+                      data-en="Built internal tools in PHP, JavaScript, CSS and SQL, alone or in a team: bonus request checks, internship request management, and a broadcast request system with controlled access. Also administered the intranet, the public website and the staff directory."
+                    >
+                      Développement d'outils internes en PHP, JavaScript, CSS et SQL, seul ou
+                      en équipe : contrôle des demandes de prime, gestion des demandes de
+                      stage, système de demande de diffusion avec accès contrôlé.
+                      Administration des sites intranet et internet ainsi que de l'annuaire.
+                    </p>
+                  </div>
+                </li>
+
+                <li class="timeline-item era-health reveal">
+                  <p class="timeline-dates">2015 – 2023</p>
+                  <div class="timeline-content">
+                    <h4 data-en="Radiographer">Manipulateur en électroradiologie médicale</h4>
+                    <p class="timeline-org" data-en="Hospitals and private clinics">
+                      Hôpital et cliniques
+                    </p>
+                    <p data-en="Eight years of interventional and conventional radiology.">
+                      Huit ans de radiologie interventionnelle et conventionnelle.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <!-- EDUCATION -->
+            <div id="education">
+              <h3 class="parcours-title" data-en="Education">Formation</h3>
+              <ol class="timeline">
+                <li class="timeline-item is-current reveal">
+                  <p class="timeline-dates">2025 – 2028</p>
+                  <div class="timeline-content">
+                    <h4 data-en="Engineering degree in computer science">
+                      Diplôme d'ingénieur en informatique
+                    </h4>
+                    <p class="timeline-org">
+                      ESIR — École Supérieure d'Ingénieurs de Rennes
+                    </p>
+                    <p data-en="In progress, graduating in 2028.">
+                      En cours, diplôme prévu en 2028.
+                    </p>
+                  </div>
+                  <div class="timeline-logo">
+                    <img
+                      src="images/logos/logo-esir.png"
+                      alt="Logo de l'ESIR"
+                      width="360"
+                      height="165"
+                    />
+                  </div>
+                </li>
+
+                <li class="timeline-item reveal">
+                  <p class="timeline-dates">2023 – 2025</p>
+                  <div class="timeline-content">
+                    <h4 data-en="Software developer, work-study programme">
+                      Développeur informatique, en alternance
+                    </h4>
+                    <p class="timeline-org">CESI Bordeaux</p>
+                  </div>
+                  <div class="timeline-logo">
+                    <img
+                      src="images/logos/logo-cesi.png"
+                      alt="Logo du CESI"
+                      width="786"
+                      height="461"
+                    />
+                  </div>
+                </li>
+
+                <li class="timeline-item era-health reveal">
+                  <p class="timeline-dates">2021 – 2022</p>
+                  <div class="timeline-content">
+                    <h4 data-en="DIU FARC-TEC — clinical research associate training">
+                      DIU FARC-TEC — formation d'attaché de recherche clinique
+                    </h4>
+                    <p class="timeline-org" data-en="University of Bordeaux">
+                      Université de Bordeaux
+                    </p>
+                  </div>
+                  <div class="timeline-logo">
+                    <img
+                      src="images/logos/logo-univ-bordeaux.png"
+                      alt="Logo de l'Université de Bordeaux"
+                      width="360"
+                      height="126"
+                    />
+                  </div>
+                </li>
+
+                <li class="timeline-item era-health reveal">
+                  <p class="timeline-dates">2011 – 2015</p>
+                  <div class="timeline-content">
+                    <h4 data-en="State diploma in radiography">
+                      Diplôme d'État de manipulateur en électroradiologie médicale
+                    </h4>
+                    <p class="timeline-org">IFMEM Bordeaux</p>
+                  </div>
+                  <div class="timeline-logo">
+                    <img
+                      src="images/logos/logo-ims.png"
+                      alt="Logo de l'IMS Bordeaux"
+                      width="366"
+                      height="138"
+                    />
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+      </div>
       </section>
 
       <!-- SKILLS -->
-      <section id="skills">
-        <h2 data-fr="Compétences" data-en="Skills">Compétences</h2>
+      <section id="skills" class="band band-tint">
+        <div class="container">
+          <h2 data-en="Skills">Compétences</h2>
 
-        <div class="skills-grid">
-          <!-- BACKEND -->
-          <div class="skill-category">
-            <h3 data-fr="Backend" data-en="Backend">Backend</h3>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/java.png"
-                  class="skill-logo"
-                  alt="Java"
-                />
-                Java
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="85">85%</div>
-              </div>
+          <div class="skills-grid">
+            <!-- BACKEND -->
+            <div class="skill-category cat-backend reveal">
+              <h3>
+                <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v6H4zM4 13h16v6H4zM7.5 8h.01M7.5 16h.01" /></svg>
+                <span>Backend</span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill">
+                  <img src="images/skills/java.png" class="skill-logo" alt="" width="24" height="24" />
+                  Java
+                </li>
+                <li class="skill">
+                  <img src="images/skills/php.png" class="skill-logo" alt="" width="24" height="24" />
+                  PHP / Symfony
+                </li>
+                <li class="skill">
+                  <img src="images/skills/node.png" class="skill-logo" alt="" width="24" height="24" />
+                  JavaScript / Node.js
+                </li>
+                <li class="skill">
+                  <img src="images/skills/c++.png" class="skill-logo" alt="" width="24" height="24" />
+                  C++
+                </li>
+                <li class="skill">
+                  <img src="images/skills/python.png" class="skill-logo" alt="" width="24" height="24" />
+                  Python
+                </li>
+                <li class="skill">
+                  <img src="images/skills/csharp.png" class="skill-logo" alt="" width="24" height="24" />
+                  C# / .NET
+                </li>
+                <li class="skill">
+                  <img src="images/skills/c.png" class="skill-logo" alt="" width="24" height="24" />
+                  C
+                </li>
+              </ul>
             </div>
 
-            <div class="skill">
-              <div class="skill-name">
-                <img src="images/skills/php.png" class="skill-logo" alt="PHP" />
-                PHP / Symphony
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="80">80%</div>
-              </div>
+            <!-- FRONTEND -->
+            <div class="skill-category cat-frontend reveal">
+              <h3>
+                <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v14H3zM3 9h18M7 7h.01" /></svg>
+                <span>Frontend</span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill">
+                  <img src="images/skills/html.png" class="skill-logo" alt="" width="24" height="24" />
+                  HTML / CSS
+                </li>
+                <li class="skill">
+                  <img src="images/skills/javascript.png" class="skill-logo" alt="" width="24" height="24" />
+                  JavaScript / jQuery
+                </li>
+                <li class="skill">
+                  <img src="images/skills/react.png" class="skill-logo" alt="" width="24" height="24" />
+                  React
+                </li>
+                <li class="skill">
+                  <img src="images/skills/typescript.png" class="skill-logo" alt="" width="24" height="24" />
+                  TypeScript
+                </li>
+                <li class="skill">
+                  <img src="images/skills/angular.png" class="skill-logo" alt="" width="24" height="24" />
+                  Angular
+                </li>
+              </ul>
             </div>
 
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/node.png"
-                  class="skill-logo"
-                  alt="Node.js"
-                />
-                JavaScript / Node.js
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="80">80%</div>
-              </div>
+            <!-- DATABASE -->
+            <div class="skill-category cat-data reveal">
+              <h3>
+                <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6c0-1.7 3.1-3 7-3s7 1.3 7 3-3.1 3-7 3-7-1.3-7-3zM5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" /></svg>
+                <span data-en="Databases">Bases de données</span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill">
+                  <img src="images/skills/mysql.png" class="skill-logo" alt="" width="24" height="24" />
+                  MySQL
+                </li>
+                <li class="skill">
+                  <img src="images/skills/postgresql.png" class="skill-logo" alt="" width="24" height="24" />
+                  PostgreSQL
+                </li>
+                <li class="skill">
+                  <img src="images/skills/mongodb.png" class="skill-logo" alt="" width="24" height="24" />
+                  MongoDB
+                </li>
+                <li class="skill">
+                  <img src="images/skills/oracle.png" class="skill-logo" alt="" width="24" height="24" />
+                  Oracle
+                </li>
+              </ul>
             </div>
 
-            <div class="skill">
-              <div class="skill-name">
-                <img src="images/skills/c++.png" class="skill-logo" alt="C++" />
-                C++
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="60">60%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/python.png"
-                  class="skill-logo"
-                  alt="Python"
-                />
-                Python
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="60">60%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/csharp.png"
-                  class="skill-logo"
-                  alt="C#"
-                />
-                C# / .NET
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="50">50%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img src="images/skills/c.png" class="skill-logo" alt="C" /> C
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="50">50%</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- FRONTEND -->
-          <div class="skill-category">
-            <h3 data-fr="Frontend" data-en="Frontend">Frontend</h3>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/html.png"
-                  class="skill-logo"
-                  alt="HTML/CSS"
-                />
-                HTML/CSS
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="90">90%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/javascript.png"
-                  class="skill-logo"
-                  alt="JavaScript"
-                />
-                JavaScript / jQuery
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="80">80%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/react.png"
-                  class="skill-logo"
-                  alt="React"
-                />
-                React
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="70">70%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/typescript.png"
-                  class="skill-logo"
-                  alt="TypeScript"
-                />
-                TypeScript
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="70">70%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/angular.png"
-                  class="skill-logo"
-                  alt="Angular"
-                />
-                Angular
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="60">60%</div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- DATABASE -->
-          <div class="skill-category">
-            <h3 data-fr="Base de données" data-en="Database">
-              Base de données
-            </h3>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/mysql.png"
-                  class="skill-logo"
-                  alt="MySQL"
-                />
-                MySQL
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="90">90%</div>
-              </div>
-            </div>
-            
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/postgresql.png"
-                  class="skill-logo"
-                  alt="PostgreSQL"
-                />
-                PostgreSQL
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="85">85%</div>
-              </div>
-            </div>
-            
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/mongodb.png"
-                  class="skill-logo"
-                  alt="MongoDB"
-                />
-                MongoDB
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="65">65%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/oracle.png"
-                  class="skill-logo"
-                  alt="Oracle"
-                />
-                Oracle
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="40">40%</div>
-              </div>
+            <!-- TOOLS -->
+            <div class="skill-category cat-tools reveal">
+              <h3>
+                <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4 4 0 0 0-5.3 5.3L4 17l3 3 5.2-5.2a4 4 0 0 0 5.3-5.3L15 12l-3-3z" /></svg>
+                <span data-en="Tools">Outils</span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill">
+                  <img src="images/skills/git.png" class="skill-logo" alt="" width="24" height="24" />
+                  Git
+                </li>
+                <li class="skill">
+                  <img src="images/skills/docker.png" class="skill-logo" alt="" width="24" height="24" />
+                  Docker
+                </li>
+                <li class="skill">
+                  <img src="images/skills/uml.png" class="skill-logo" alt="" width="24" height="24" />
+                  UML
+                </li>
+                <li class="skill">
+                  <img src="images/skills/cicd.png" class="skill-logo" alt="" width="24" height="24" />
+                  CI/CD
+                </li>
+              </ul>
             </div>
           </div>
-
-          <!-- TOOLS -->
-          <div class="skill-category">
-            <h3 data-fr="Outils" data-en="Tools">Outils</h3>
-            <div class="skill">
-              <div class="skill-name">
-                <img src="images/skills/git.png" class="skill-logo" alt="Git" />
-                Git
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="80">80%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/docker.png"
-                  class="skill-logo"
-                  alt="Docker"
-                />
-                Docker
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="60">60%</div>
-              </div>
-            </div>
-
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/uml.png"
-                  class="skill-logo"
-                  alt="UML"
-                />
-                UML
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="80">80%</div>
-              </div>
-            </div>
-
-            <div class="skill">
-              <div class="skill-name">
-                <img
-                  src="images/skills/cicd.png"
-                  class="skill-logo"
-                  alt="CI/CD"
-                />
-                CI/CD
-              </div>
-              <div class="skill-bar">
-                <div class="skill-level" data-level="40">40%</div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-      <!-- PROJECTS -->
-      <section id="projects">
-        <h2 data-fr="Projets" data-en="Projects">Projets</h2>
-        <div class="carousel-wrapper">
-          <div class="carousel-viewport">
-            <button class="carousel-btn prev">‹</button>
-
-            <div class="carousel-container">
-              <div class="project-slide">
-                <h3>Application Web Météo</h3>
-                <img
-                  src="images/projects/meteo.png"
-                  class="project-image"
-                  alt="Meteo"
-                />
-                <div class="tech-badges">
-                  <span>Python</span>
-                  <span>Django</span>
-                  <span>MongoDB</span>
-                </div>
-                <a
-                  href="https://github.com/EwennV/CUBES1.git"
-                  target="_blank"
-                  class="btn secondary"
-                  >GitHub</a
-                >
-              </div>
-
-              <div class="project-slide">
-                <h3>Application Web Pokédex</h3>
-                <img
-                  src="images/projects/pokedex.png"
-                  class="project-image"
-                  alt="Pokedex"
-                />
-                <div class="tech-badges">
-                  <span>PHP</span>
-                  <span>Symphony</span>
-                  <span>MySQL</span>
-                </div>
-                <a
-                  href="https://github.com/ManuelTARBY/Pokedex.git"
-                  target="_blank"
-                  class="btn secondary"
-                  >GitHub</a
-                >
-              </div>
-
-              <div class="project-slide">
-                <h3>Stive - Potion Seller</h3>
-                <img
-                  src="images/projects/stive.png"
-                  class="project-image"
-                  alt="Stive"
-                />
-                <div class="tech-badges">
-                  <span>C#</span>
-                  <span>.NET</span>
-                  <span>Godot</span>
-                </div>
-                <a
-                  href="https://github.com/Matht64/STIVE-Potion-Seller.git"
-                  target="_blank"
-                  class="btn secondary"
-                  >GitHub</a
-                >
-              </div>
-
-              <div class="project-slide">
-                <h3>Projet Vide Grenier</h3>
-                <div class="project-image">
-                  <span>Logo / Image ici</span>
-                </div>
-                <div class="tech-badges">
-                  <span>PHP</span>
-                  <span>Docker</span>
-                </div>
-                <a
-                  href="https://github.com/barthelemy-lebel/bloc5-vide-grenier.git"
-                  target="_blank"
-                  class="btn secondary"
-                  >GitHub</a
-                >
-              </div>
-              
-              <div class="project-slide">
-                <h3>Projet MyRoad.ai</h3>
-                <div class="project-image">
-                  <span>Logo / Image ici</span>
-                </div>
-                <div class="tech-badges">
-                  <span>Agent Mistral IA</span>
-                  <span>Node.js</span>
-                  <span>SupaBase</span>
-                </div>
-                <a
-                  href="https://github.com/ycbkaii/myroad.ai.git"
-                  target="_blank"
-                  class="btn secondary"
-                  >GitHub</a
-                >
-              </div>
-            </div>
-          </div>
-          <button class="carousel-btn next">›</button>
-          <div class="carousel-dots"></div>
-        </div>
+      </div>
       </section>
 
-      <!-- EDUCATION -->
-      <section id="education">
-        <h2 data-fr="Formation" data-en="Education">Formation</h2>
-        <p
-            data-fr="Un parcours atypique, pour un résultat unique !"
-            data-en="An atypical journey, leading to a unique result !"
-        >
-            Un parcours atypique, pour un résultat unique !
-        </p>
-        <div class="timeline">
-          <div class="timeline-line"></div>
-          <!-- ESIR -->
-          <div class="timeline-item">
-            <div class="timeline-point"></div>
-            <div class="timeline-logo">
-              <img src="images/logos/logo-esir.png" alt="Logo ESIR" />
-            </div>
-            <div class="timeline-content">
-              <h3>ESIR — École Supérieure d'Ingénieur de Rennes</h3>
-              <p
-                data-fr="1re année — Ingénieur informatique"
-                data-en="1st year — Computer Engineering"
-              >
-                1re année — Ingénieur informatique
-              </p>
-              <p>2025 – Présent</p>
-            </div>
-          </div>
-
-          <!-- CESI -->
-          <div class="timeline-item">
-            <div class="timeline-point"></div>
-            <div class="timeline-logo">
-              <img src="images/logos/logo-cesi.png" alt="Logo CESI Bordeaux" />
-            </div>
-            <div class="timeline-content">
-              <h3>CESI Bordeaux — Alternance Développeur informatique</h3>
-              <p
-                data-fr="2 ans d’alternance pour devenir développeur informatique"
-                data-en="2-year apprenticeship to become a software developer"
-              >
-                2 ans d’alternance pour devenir développeur informatique
-              </p>
-              <p>2023 – 2025</p>
-            </div>
-          </div>
-          <!-- Diviseur -->
-          <div
-            class="timeline-divider"
-            data-fr="Et avant cela ..."
-            data-en="And before that ..."
+      <!-- CONTACT -->
+      <section id="contact" class="band band-accent">
+        <div class="hatch hatch-contact" aria-hidden="true"></div>
+        <div class="container">
+          <h2>Contact</h2>
+          <p
+            class="section-intro"
+            data-en="For an internship, a project or a simple question, email is the easiest way to reach me."
           >
-            Et avant cela ...
-          </div>
-          <!-- DIU FARC - TEC -->
-          <div class="timeline-item">
-            <div class="timeline-point"></div>
-            <div class="timeline-logo">
-              <img
-                src="images/logos/logo-univ-bordeaux.png"
-                alt="Logo Université de Bordeaux"
-              />
-            </div>
-            <div class="timeline-content">
-              <h3>DIU FARC — TEC</h3>
-              <p
-                data-fr="Formation d'Attaché de Recherche Clinique"
-                data-en="Clinical Research Associate training"
+            Pour un stage, un projet ou une simple question, le plus simple est de m'écrire.
+          </p>
+          <p class="contact-email reveal">
+            <a href="mailto:terry.gyselings.pro@gmail.com">terry.gyselings.pro@gmail.com</a>
+          </p>
+          <ul class="links">
+            <li>
+              <a href="https://github.com/TerryGyselings" target="_blank" rel="noopener">
+                <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"
+                  />
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/in/terry-gyselings-883230313"
+                target="_blank"
+                rel="noopener"
               >
-                Formation d'Attaché de Recherche Clinique
-              </p>
-              <p>2021 – 2022</p>
-            </div>
-          </div>
-
-          <!-- IFMEM -->
-          <div class="timeline-item">
-            <div class="timeline-point"></div>
-            <div class="timeline-logo">
-              <img src="images/logos/logo-ims.png" alt="Logo IMS Bordeaux" />
-            </div>
-            <div class="timeline-content">
-              <h3>IFMEM Bordeaux</h3>
-              <p
-                data-fr="Diplôme d'État de Manipulateur en Électroradiologie Médicale"
-                data-en="State Diploma in Medical Imaging"
-              >
-                Diplôme d'État de Manipulateur en Électroradiologie Médicale
-              </p>
-              <p>2011 – 2015</p>
-            </div>
-          </div>
-        </div>
+                <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"
+                  />
+                </svg>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+      </div>
       </section>
     </main>
 
-    <!-- CONTACT -->
-    <footer id="contact">
-      <h2>Contact</h2>
-      <p>
-        <a href="mailto:terry.gyselings.pro@gmail.com"
-          >terry.gyselings.pro@gmail.com</a
-        >
+    <footer>
+      <div class="container">
+        <p class="credits">
+        &copy; 2026 Terry Gyselings.
+        <span data-en="All rights reserved.">Tous droits réservés.</span>
       </p>
-      <p class="links">
-        <a href="https://github.com/TerryGyselings" target="_blank"
-          ><img
-            src="images/icons/github.png"
-            alt="GitHub"
-            class="contact-icon"
-          />
-          GitHub
-        </a>
-        <span class="separator">|</span>
-        <a
-          href="https://linkedin.com/in/terry-gyselings-883230313"
-          target="_blank"
-          ><img
-            src="images/icons/linkedin.png"
-            alt="LinkedIn"
-            class="contact-icon"
-          />
-          LinkedIn
-        </a>
-      </p>
-
-      <div class="credits">
-        &copy; 2026 Terry Gyselings - All rights reserved
       </div>
     </footer>
 

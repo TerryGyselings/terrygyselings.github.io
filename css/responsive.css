@@ -1,92 +1,162 @@
-@media (max-width: 768px) {
-  .nav-menu {
-    flex-direction: column;
-    background: var(--bg);
-    position: absolute;
-    right: 0;
-    top: 60px;
-    padding: 20px;
-    opacity: 0;
-    pointer-events: none; /* empêche les clics quand fermé */
-    transform: translateY(-20px);
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
-  }
+/* TABLETTE ET MOBILE */
 
-  .nav-menu.active {
-    opacity: 1;
-    pointer-events: auto; /* activé quand ouvert */
-    transform: translateY(0);
-  }
-
-  /* Effet "bounce" à la fermeture */
-  .nav-menu.closing {
-    opacity: 0;
-    transform: translateY(-20px) scaleY(0.95); /* léger rétrécissement */
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .burger {
+@media (max-width: 960px) {
+  /* La frise passe en liste verticale : plus assez de largeur pour l'échelle */
+  .trajectory {
     display: block;
   }
 
-  .timeline {
-    padding-left: 0;
-    gap: 50px;
-  }
-
-  /* Ligne verticale et points cachés */
-  .timeline-line,
-  .timeline-point {
+  .trajectory::before {
     display: none;
   }
 
-  .timeline-item {
+  .traj-item {
+    display: grid;
+    grid-template-columns: 6px minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 14px;
+    padding: 5px 0;
+  }
+
+  .traj-item .traj-bar {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: stretch;
+    height: auto;
+    margin: 0;
+    transform-origin: center top;
+    animation-name: traj-grow-vertical;
+  }
+
+  .traj-item .traj-label {
+    grid-row: 1;
+    grid-column: 2;
+    width: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0 10px;
+    padding: 4px 0;
+    justify-self: start;
+    text-align: left;
+    white-space: normal;
+    font-size: 0.98rem;
+  }
+
+  .traj-today {
+    display: none;
+  }
+
+  @keyframes traj-grow-vertical {
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  .about-grid,
+  .parcours-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: 16px;
+  }
+
+  /* MENU MOBILE */
+
+  .burger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
     flex-direction: column;
-    align-items: center; /* logo et contenu centrés */
-    gap: 15px;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px var(--gutter) 20px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      visibility 0s linear 0.2s;
+  }
+
+  .nav-menu.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+
+  .nav-menu a {
+    padding: 12px 0;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-menu a.active {
+    border-bottom-color: var(--border);
+    box-shadow: inset 3px 0 0 var(--accent);
+    padding-left: 12px;
+  }
+
+  .nav-tools {
+    padding-top: 16px;
+  }
+
+  .hero-buttons .btn {
+    flex: 1 1 auto;
     text-align: center;
-    position: relative;
   }
 
-  .timeline-logo {
-    width: 80px;
-    height: 80px;
-  }
+  /* PROJETS : visuel au-dessus du texte */
 
-  .timeline-logo img {
-    max-width: 90%;
-    max-height: 90%;
-  }
-
-  .timeline-content h3 {
-    font-size: 1.1rem;
-  }
-
-  .timeline-content p {
-    font-size: 0.9rem;
+  .carousel {
+    --slide-width: 88vw;
   }
 
   .project-slide {
-    flex: 0 0 90%;
-    padding: 30px 15px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
   }
 
   .project-image {
-    height: 200px;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1 / 1;
   }
 
-  .carousel-viewport {
-    padding: 0;
+  .carousel-controls {
+    gap: 12px;
   }
-  .carousel-btn {
-    font-size: 2.5rem;
-  }
+
+  /* COMPÉTENCES */
 
   .skills-grid {
-    grid-template-columns: repeat(1, minmax(220px, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .skill-category:nth-child(even) {
+    transition-delay: 0s;
+  }
+
+  .about-facts {
+    transition-delay: 0s;
+  }
+
+  .timeline-logo {
+    width: 72px;
+    height: 46px;
   }
 }

@@ -2,15 +2,17 @@
 
 .btn {
   display: inline-block;
-  padding: 12px 24px;
-  border-radius: 999px;
+  padding: 12px 22px;
+  border: 1px solid transparent;
+  border-radius: 8px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.2s ease;
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn:hover {
@@ -22,18 +24,26 @@
 }
 
 .primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: white;
+  box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+
+.primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.primary:hover {
+  background: var(--accent-dark);
+  color: var(--accent-ink);
 }
 
 .secondary {
-  border: 1px solid var(--border);
+  border-color: var(--text);
   background: transparent;
   color: var(--text);
 }
 
 .secondary:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  background: rgba(37, 99, 235, 0.05);
+  background: var(--text);
+  color: var(--bg);
 }
